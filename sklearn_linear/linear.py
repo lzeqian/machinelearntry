@@ -16,7 +16,7 @@ import sklearn.model_selection as ms;
     INDUS：城镇非零售商用土地的比例。   
     CHAS：查理斯河空变量（如果边界是河流，则为1；否则为0）    
     NOX：一氧化氮浓度。  
-    RM：住宅平均房间数。   
+    
     AGE：1940 年之前建成的自用房屋比例。   
     DIS：到波士顿五个中心区域的加权距离。   
     RAD：辐射性公路的接近指数。
@@ -25,24 +25,33 @@ import sklearn.model_selection as ms;
     B：1000（Bk-0.63）^ 2，其中 Bk 指代城镇中黑人的比例。  
     LSTAT：人口中地位低下者的比例。 
     MEDV：自住房的平均房价，以千美元计。
-    target是平均房价
+    target是房价 以千美元计
 """
 bd=ds.load_boston();
+#获取波士顿房价的所有特征数据
 data=bd.data;
+#获取每行特征对应的房价
 label=bd.target;
-print(data.shape)
-#自住房的平均房价，以千美元计。
-medv=data[: ,-1::1]
+#为了演示简单线性回归 获取一个特征
+#RM：住宅平均房间数。
+nox=data[: ,5:6]
+#将数据拆分成80%的训练数据  20%的测试数据
+xtrain,xtest,ytrain,ytest=ms.train_test_split(nox,label,test_size=0.2,random_state=10)
+xtrain=xtrain[ytrain<50]
+ytrain=ytrain[ytrain<50]
+#将 [[4],[2]]这样的特征矩阵转换成 [4,2]这样的向量
+plot.scatter(xtrain[:,-1],ytrain,c="red")
+plot.show();
 
+#创建线程回归的类
 lr=lm.LinearRegression();
-xtrain,xtest,ytrain,ytest=ms.train_test_split(medv,label,test_size=0.2,random_state=10)
 lr.fit(xtrain,ytrain);
 #系数也就是斜率
 print(lr.coef_)
 #截距
 print(lr.intercept_)
-#绘制 80%的真实数据
 plot.scatter(xtrain[:,-1],ytrain,c="red")
+#绘制 80%的真实数据
 plot.plot(xtrain[:,-1],xtrain[:,-1]*lr.coef_+lr.intercept_);
 plot.show();
 
