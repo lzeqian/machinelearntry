@@ -7,6 +7,7 @@ X=x.reshape(-1,1);
 y=x*3+4+np.random.rand(100);
 plot.plot(x,y,"o");
 
+
 #使用梯度下降法拟合这个函数
 
 """
@@ -14,7 +15,9 @@ plot.plot(x,y,"o");
  sum(y-t0-t1*x1-t2*x2 -.....tn*xn)**2
 """
 def j(x,y,theta):
-    return np.sum(y-x.dot(theta)**2)/len(y)
+    #return np.sum((y-x.dot(theta))**2)/len(y)
+    return np.sum((y-(theta[0]+theta[1]*x[:,1]))**2)/len(y);
+
 """
 计算所有theta的梯度 
  t0=sum(2(y-tx.*x)*-1)

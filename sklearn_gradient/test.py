@@ -1,7 +1,7 @@
 import numpy as np;
 import matplotlib.pyplot as plot
 arr1=np.array([[1,2],[2,3]])
-arr2=np.array([10,10])
+arr2=np.array([10,5])
 print(arr1.dot(arr2))
 #print(np.empty((3)))
 
