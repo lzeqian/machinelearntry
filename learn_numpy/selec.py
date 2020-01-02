@@ -22,6 +22,17 @@ print(np.mean(p1,axis=0)) #[3.5,3.5] 垂直
 print(np.mean(p1,axis=1)) #[5,3] 水平
 
 ############方差#############
-print(np.var(p1))
-print(np.mean(abs(p1 - p1.mean())**2))
+#参考：https://www.cnblogs.com/eczhou/p/5434996.html或者https://blog.csdn.net/zhu_wendao/article/details/89916869
+arr = np.array([1, 2, 3, 100, 55])
+# var 方差即各项-均值的平方求和后再除以N ，表示数据离平均数据的距离，表示数据的离散程度
+print(np.var(arr))
+print(np.sum(np.abs(arr - np.mean(arr)) ** 2) / len(arr))  # 等价代码
+print(np.mean(abs(arr - arr.mean()) ** 2))  # 等价代码
 
+# std：表示标准差，是var的平方根。
+print(np.std(arr))
+print(np.sqrt(np.var(arr)));
+
+# cov：协方差 ,与var类似，但是除以(N-1)
+print(np.cov(arr));
+print(np.sum(np.abs(arr - np.mean(arr)) ** 2) / (len(arr) - 1))  # 等价代码
