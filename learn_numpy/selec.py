@@ -34,5 +34,6 @@ print(np.std(arr))
 print(np.sqrt(np.var(arr)));
 
 # cov：协方差 ,与var类似，但是除以(N-1)
+# 协方差理解：https://www.matongxue.com/madocs/568.html
 print(np.cov(arr));
 print(np.sum(np.abs(arr - np.mean(arr)) ** 2) / (len(arr) - 1))  # 等价代码
