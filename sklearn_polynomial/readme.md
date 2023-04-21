@@ -1,0 +1,6 @@
+- Pipeline测试.ipynb,用于演示Pipeline作用
+- PolynomialFeatures测试.ipynb，用于演示PolynomialFeatures类生成多项式用法
+- 多项式回归.ipynb，用来演示多项式回归和线性回归比较。
+- 拟合测试.ipynb 使用线性回归，二项式，10项式，100项式，拟合数据的均方误差。
+- 训练数据和测试数据测试过拟合.ipynb  训练数据和测试数据测试过拟合
+- 学习曲线.ipynb 用于研究学习曲线
